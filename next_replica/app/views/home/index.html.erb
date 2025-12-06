@@ -1,0 +1,21 @@
+<h1>Mission Control</h1>
+
+<section>
+  <h2>Quest Pulse</h2>
+  <ul>
+    <% @quest_counts_by_status.each do |status, count| %>
+      <li><%= status %>: <%= count %></li>
+    <% end %>
+  </ul>
+</section>
+
+<section>
+  <h2>Recently updated</h2>
+  <ul>
+    <% @recent_quests.each do |quest| %>
+      <li>
+        <%= link_to quest.title, quest %> — <%= quest.status %> (<%= quest.published_at&.strftime("%b %d") %>)
+      </li>
+    <% end %>
+  </ul>
+</section>

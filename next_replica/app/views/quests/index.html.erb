@@ -1,0 +1,31 @@
+<h1>Quest Registry</h1>
+
+<section class="quest-import">
+  <%= simple_form_with url: import_quests_path, method: :post, scope: :import, local: true do |form| %>
+    <%= form.input :source_url, label: "Remote CSV or XLSX URL", placeholder: "https://example.com/quests.csv" %>
+    <%= form.button :submit, "Schedule Import" %>
+  <% end %>
+</section>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Owner</th>
+      <th>Published</th>
+      <th>Metadata Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @quests.each do |quest| %>
+      <tr>
+        <td><%= link_to quest.title, quest_path(quest) %></td>
+        <td><%= quest.status %></td>
+        <td><%= quest.user.display_name %></td>
+        <td><%= quest.published_at&.to_s(:short) %></td>
+        <td><%= quest.metadata_hash.slice(:meta_tags, :region, :priority).values.compact.join(', ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,8 @@
+<%= simple_form_with model: quest do |form| %>
+  <%= form.input :title %>
+  <%= form.input :status, collection: Quest.status.values, include_blank: false %>
+  <%= form.input :published_at, as: :datetime, input_html: { value: quest.published_at || Time.current } %>
+  <%= form.rich_text_area :summary %>
+  <%= form.input :metadata, as: :text, input_html: { rows: 3 }, hint: "Store structured metadata as JSON" %>
+  <%= form.button :submit %>
+<% end %>

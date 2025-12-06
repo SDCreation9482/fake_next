@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NextReplica</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <%= link_to "Dashboard", root_path, class: "nav-link" %> |
+        <%= link_to "Quests", quests_path, class: "nav-link" %>
+        <% if user_signed_in? %>
+          <%= link_to "New Quest", new_quest_path, class: "nav-link" %> |
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+        <% end %>
+      </nav>
+    </header>
+
+    <section class="flashes">
+      <% flash.each do |key, message| %>
+        <div class="flash <%= key %>"><%= message %></div>
+      <% end %>
+    </section>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

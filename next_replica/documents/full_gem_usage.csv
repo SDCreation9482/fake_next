@@ -1,0 +1,160 @@
+Package,Used Methods/Functions
+actioncable,mount ActionCable.server and QuestUpdatesChannel streams/broadcast broadcasts to current_user
+actionmailbox,nil
+actionmailer,config.action_mailer.default_url_options for Devise mailers
+actionpack,ApplicationController < ActionController::Base and routes defined with Rails DSL
+actiontext,has_rich_text :summary plus action_text:install assets and stylesheet include
+actionview,layouts/views use link_to/render/flash blocks and javascript_importmap_tags
+active_model_serializers,QuestSerializer attributes/metadata rendering for Api::V1::QuestsController
+activejob,QuestImportJob < ActiveJob::Base with Resque adapter and queue_name prefix
+activemodel,models use validations/associations and Enumerize helpers
+activerecord,"models, migrations, seeds, scopes, QuestImporter persistence"
+activestorage,ActionText uses ActiveStorage attachments (has_rich_text)
+activesupport,"Time.current, config, enumerize, callbacks, flash helpers used across controllers/models"
+addressable,nil
+ast,nil
+base64,nil
+bcrypt,nil
+benchmark,nil
+bigdecimal,nil
+bindex,nil
+bootsnap,nil
+builder,nil
+byebug,nil
+capybara,nil
+case_transform,nil
+cocoon,nil
+concurrent-ruby,nil
+crass,nil
+csv,nil
+date,nil
+devise,"devise modules (registerable, recoverable, rememberable, validatable, confirmable, lockable) plus generated routes and views"
+diff-lcs,nil
+drb,nil
+enumerize,extend Enumerize in User/Quest and enumerize :role/:status with predicates/scopes
+erubi,nil
+et-orbi,nil
+execjs,nil
+factory_bot,nil
+factory_bot_rails,nil
+faker,nil
+faraday,nil
+faraday-net_http,nil
+ffi,nil
+friendly_id,"extend FriendlyId + friendly_id(:title, use: %i[slugged finders]) in Quest"
+fugit,nil
+globalid,nil
+hashie,nil
+httparty,HTTParty.get downloads remote CSV/XLSX sources in QuestImporter
+i18n,nil
+importmap-rails,javascript_importmap_tags in layout to load import map assets
+json,nil
+jsonapi-renderer,nil
+jwt,nil
+language_server-protocol,nil
+lint_roller,nil
+listen,nil
+logger,nil
+loofah,nil
+mail,nil
+marcel,nil
+matrix,nil
+method_source,nil
+mini_mime,nil
+minitest,nil
+mono_logger,nil
+msgpack,nil
+multi_json,nil
+multi_xml,nil
+mustermann,nil
+mutex_m,nil
+mysql2,nil
+net-http,nil
+net-imap,nil
+net-pop,nil
+net-protocol,nil
+net-smtp,nil
+nio4r,nil
+nkf,nil
+nokogiri,nil
+oauth2,nil
+oj,Oj.load and Oj.dump normalize Quest.metadata_hash JSON
+omniauth,nil
+omniauth-oauth2,nil
+orm_adapter,nil
+ostruct,nil
+paper_trail,has_paper_trail on Quest for versioning
+parallel,nil
+parser,nil
+prism,nil
+prometheus-client,PrometheusRegistry registers Counter/Gauge metrics for quest events/published_at
+public_suffix,nil
+puma,Puma serves the app when running bin/rails server
+pundit,"include Pundit, policy_scope, authorize, rescue_from Pundit::NotAuthorizedError"
+raabro,nil
+racc,nil
+rack,nil
+rack-protection,nil
+rack-test,nil
+rails,"bin/rails commands (generate/devise/install, db:seed/migrate) and Rails.application route/config setup"
+rails-dom-testing,nil
+rails-html-sanitizer,nil
+railties,nil
+rainbow,nil
+rake,nil
+rb-fsevent,nil
+rb-inotify,nil
+redis,"Redis.new(url: ENV.fetch(REDIS_URL, redis://localhost:6379/0)) for Resque"
+redis-namespace,nil
+regexp_parser,nil
+request_store,nil
+responders,nil
+resque,Resque.redis config and Resque.enqueue QuestImportJob
+resque-scheduler,require resque/scheduler and Resque::Scheduler.dynamic = true
+rexml,nil
+roo,Roo::Spreadsheet.open reads Excel/XLSX import files
+rspec-core,nil
+rspec-expectations,nil
+rspec-mocks,nil
+rspec-rails,nil
+rspec-support,nil
+rubocop,nil
+rubocop-ast,nil
+ruby-progressbar,nil
+ruby2_keywords,nil
+rubyzip,nil
+rufus-scheduler,nil
+sass-rails,nil
+sassc,nil
+sassc-rails,nil
+securerandom,nil
+selenium-webdriver,nil
+shoulda-matchers,nil
+simple_form,simple_form_with import/quest forms plus Simple Form initializer
+sinatra,nil
+smarter_csv,SmarterCSV.process parses CSV rows for QuestImporter
+snaky_hash,nil
+spring,nil
+spring-watcher-listen,nil
+sprockets,nil
+sprockets-rails,nil
+sqlite3,sqlite3 adapter backs development/test ActiveRecord databases
+stimulus-rails,nil
+thor,nil
+tilt,nil
+timeout,nil
+turbo-rails,nil
+tzinfo,nil
+uglifier,nil
+unicode-display_width,nil
+unicode-emoji,nil
+uri,nil
+version_gem,nil
+warden,nil
+web-console,nil
+websocket,nil
+websocket-driver,nil
+websocket-extensions,nil
+write_xlsx,nil
+xpath,nil
+zeitwerk,nil

@@ -1,0 +1,17 @@
+<h1><%= @quest.title %></h1>
+<p><strong>Status:</strong> <%= @quest.status %></p>
+<p><strong>Owner:</strong> <%= @quest.user.display_name %></p>
+<p><strong>Published:</strong> <%= @quest.published_at&.to_s(:long) %></p>
+
+<section>
+  <h2>Summary</h2>
+  <%= @quest.summary.body.to_s.html_safe if @quest.summary.present? %>
+</section>
+
+<section>
+  <h2>Metadata</h2>
+  <pre><%= JSON.pretty_generate(@quest.metadata_hash.merge("id" => @quest.slug)) %></pre>
+</section>
+
+<%= link_to "Edit", edit_quest_path(@quest) if policy(@quest).update? %> |
+<%= link_to "Back", quests_path %>
