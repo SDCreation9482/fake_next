@@ -1,0 +1,127 @@
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20251205153607)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "confirmation_token" varchar, "confirmed_at" datetime(6), "confirmation_sent_at" datetime(6), "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime(6), "name" varchar NOT NULL, "role" varchar DEFAULT 'member' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20251205153607"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20251205153632)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20251205153632"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActionTextTables (20251205153633)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "action_text_rich_texts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "body" text, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts" ("record_type", "record_id", "name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20251205153633"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVersions (20251205153641)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "versions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "item_type" varchar NOT NULL, "item_id" bigint NOT NULL, "event" varchar NOT NULL, "whodunnit" varchar, "object" text(1073741823), "created_at" datetime(6))[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_versions_on_item_type_and_item_id" ON "versions" ("item_type", "item_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20251205153641"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateQuests (20251205153712)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "quests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar NOT NULL, "slug" varchar NOT NULL, "status" varchar DEFAULT 'drafted' NOT NULL, "user_id" integer NOT NULL, "metadata" text, "published_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3914bedf0e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_quests_on_user_id" ON "quests" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_quests_on_slug" ON "quests" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20251205153712"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFriendlyIdSlugs (20251205153722)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "friendly_id_slugs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "slug" varchar NOT NULL, "sluggable_id" integer NOT NULL, "sluggable_type" varchar(50), "scope" varchar, "created_at" datetime(6))[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id" ON "friendly_id_slugs" ("sluggable_type", "sluggable_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type" ON "friendly_id_slugs" ("slug", "sluggable_type")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope" ON "friendly_id_slugs" ("slug", "sluggable_type", "scope")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20251205153722"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2025-12-05 15:46:00.962704"], ["updated_at", "2025-12-05 15:46:00.962704"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@nextreplica.local"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@nextreplica.local"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "confirmation_token", "confirmed_at", "confirmation_sent_at", "unconfirmed_email", "failed_attempts", "unlock_token", "locked_at", "name", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "admin@nextreplica.local"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["confirmation_token", "[FILTERED]"], ["confirmed_at", "2025-12-05 15:55:25.236237"], ["confirmation_sent_at", nil], ["unconfirmed_email", nil], ["failed_attempts", 0], ["unlock_token", "[FILTERED]"], ["locked_at", nil], ["name", "Mission Admin"], ["role", "admin"], ["created_at", "2025-12-05 15:55:25.237978"], ["updated_at", "2025-12-05 15:55:25.237978"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@nextreplica.local"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@nextreplica.local"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@nextreplica.local"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@nextreplica.local"], ["LIMIT", 1]]
+  [1m[36mQuest Load (0.2ms)[0m  [1m[34mSELECT "quests".* FROM "quests" WHERE "quests"."user_id" = ? AND "quests"."title" = ? LIMIT ?[0m  [["user_id", 1], ["title", "Pathfinder Mission"], ["LIMIT", 1]]
+  ↳ app/services/quest_importer.rb:18:in `block in import!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mQuest Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "quests" WHERE "quests"."id" IS NOT NULL AND "quests"."slug" = ? LIMIT ?[0m  [["slug", "pathfinder-mission"], ["LIMIT", 1]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mCACHE Quest Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "quests" WHERE "quests"."id" IS NOT NULL AND "quests"."slug" = ? LIMIT ?[0m  [["slug", "pathfinder-mission"], ["LIMIT", 1]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mQuest Create (0.6ms)[0m  [1m[32mINSERT INTO "quests" ("title", "slug", "status", "user_id", "metadata", "published_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pathfinder Mission"], ["slug", "pathfinder-mission"], ["status", "launched"], ["user_id", 1], ["metadata", "{\":meta_tags\":\"rescue;survey\"}"], ["published_at", "2025-12-01 18:30:00"], ["created_at", "2025-12-05 16:02:40.750156"], ["updated_at", "2025-12-05 16:02:40.750156"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mActionText::RichText Create (0.2ms)[0m  [1m[32mINSERT INTO "action_text_rich_texts" ("name", "body", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "summary"], ["body", "<p>Chart new trails and document discoveries.</p>"], ["record_type", "Quest"], ["record_id", 1], ["created_at", "2025-12-05 16:02:40.776716"], ["updated_at", "2025-12-05 16:02:40.776716"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 1], ["record_type", "ActionText::RichText"], ["name", "embeds"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mPaperTrail::Version Create (0.1ms)[0m  [1m[32mINSERT INTO "versions" ("item_type", "item_id", "event", "whodunnit", "object", "created_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item_type", "Quest"], ["item_id", 1], ["event", "create"], ["whodunnit", nil], ["object", nil], ["created_at", "2025-12-05 16:02:40.777931"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  Rendered /Users/shamanthhegde/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/actiontext-7.0.10/app/views/action_text/contents/_content.html.erb within layouts/action_text/contents/_content (Duration: 2.4ms | Allocations: 909)
+[ActionCable] Broadcasting to quest_updates:Z2lkOi8vbmV4dC1yZXBsaWNhL1VzZXIvMQ: {:id=>1, :title=>"Pathfinder Mission", :slug=>"pathfinder-mission", :status=>"launched", :published_at=>Mon, 01 Dec 2025 18:30:00.000000000 UTC +00:00, :summary=>"<div class=\"trix-content\">\n  <p>Chart new trails and document discoveries.</p>\n</div>\n"}
+  [1m[36mQuest Update (0.1ms)[0m  [1m[33mUPDATE "quests" SET "updated_at" = ? WHERE "quests"."id" = ?[0m  [["updated_at", "2025-12-05 16:02:40.777931"], ["id", 1]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mPaperTrail::Version Create (0.1ms)[0m  [1m[32mINSERT INTO "versions" ("item_type", "item_id", "event", "whodunnit", "object", "created_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item_type", "Quest"], ["item_id", 1], ["event", "update"], ["whodunnit", nil], ["object", "---\nid: 1\ntitle: Pathfinder Mission\nslug: pathfinder-mission\nstatus: launched\nuser_id: 1\nmetadata: '{\":meta_tags\":\"rescue;survey\"}'\npublished_at: !ruby/object:ActiveSupport::TimeWithZone\n  utc: 2025-12-01 18:30:00.000000000 Z\n  zone: &1 !ruby/object:ActiveSupport::TimeZone\n    name: Etc/UTC\n  time: 2025-12-01 18:30:00.000000000 Z\ncreated_at: !ruby/object:ActiveSupport::TimeWithZone\n  utc: 2025-12-05 16:02:40.750156000 Z\n  zone: *1\n  time: 2025-12-05 16:02:40.750156000 Z\nupdated_at: !ruby/object:ActiveSupport::TimeWithZone\n  utc: 2025-12-05 16:02:40.777931000 Z\n  zone: *1\n  time: 2025-12-05 16:02:40.777931000 Z\n"], ["created_at", "2025-12-05 16:02:40.777931"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mQuest Load (0.1ms)[0m  [1m[34mSELECT "quests".* FROM "quests" WHERE "quests"."user_id" = ? AND "quests"."title" = ? LIMIT ?[0m  [["user_id", 1], ["title", "Community Outreach"], ["LIMIT", 1]]
+  ↳ app/services/quest_importer.rb:18:in `block in import!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mQuest Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "quests" WHERE "quests"."id" IS NOT NULL AND "quests"."slug" = ? LIMIT ?[0m  [["slug", "community-outreach"], ["LIMIT", 1]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mCACHE Quest Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "quests" WHERE "quests"."id" IS NOT NULL AND "quests"."slug" = ? LIMIT ?[0m  [["slug", "community-outreach"], ["LIMIT", 1]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mQuest Create (0.7ms)[0m  [1m[32mINSERT INTO "quests" ("title", "slug", "status", "user_id", "metadata", "published_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Community Outreach"], ["slug", "community-outreach"], ["status", "drafted"], ["user_id", 1], ["metadata", "{\":meta_tags\":\"outreach;stories\"}"], ["published_at", "2025-12-03 18:30:00"], ["created_at", "2025-12-05 16:02:41.409451"], ["updated_at", "2025-12-05 16:02:41.409451"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mActionText::RichText Create (0.1ms)[0m  [1m[32mINSERT INTO "action_text_rich_texts" ("name", "body", "record_type", "record_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "summary"], ["body", "<p>Host workshops and gather neighborhood stories.</p>"], ["record_type", "Quest"], ["record_id", 2], ["created_at", "2025-12-05 16:02:41.411100"], ["updated_at", "2025-12-05 16:02:41.411100"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ?[0m  [["record_id", 2], ["record_type", "ActionText::RichText"], ["name", "embeds"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mPaperTrail::Version Create (0.1ms)[0m  [1m[32mINSERT INTO "versions" ("item_type", "item_id", "event", "whodunnit", "object", "created_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item_type", "Quest"], ["item_id", 2], ["event", "create"], ["whodunnit", nil], ["object", nil], ["created_at", "2025-12-05 16:02:41.411911"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  Rendered /Users/shamanthhegde/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/actiontext-7.0.10/app/views/action_text/contents/_content.html.erb within layouts/action_text/contents/_content (Duration: 0.2ms | Allocations: 277)
+[ActionCable] Broadcasting to quest_updates:Z2lkOi8vbmV4dC1yZXBsaWNhL1VzZXIvMQ: {:id=>2, :title=>"Community Outreach", :slug=>"community-outreach", :status=>"drafted", :published_at=>Wed, 03 Dec 2025 18:30:00.000000000 UTC +00:00, :summary=>"<div class=\"trix-content\">\n  <p>Host workshops and gather neighborhood stories.</p>\n</div>\n"}
+  [1m[36mQuest Update (0.0ms)[0m  [1m[33mUPDATE "quests" SET "updated_at" = ? WHERE "quests"."id" = ?[0m  [["updated_at", "2025-12-05 16:02:41.411911"], ["id", 2]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mPaperTrail::Version Create (0.0ms)[0m  [1m[32mINSERT INTO "versions" ("item_type", "item_id", "event", "whodunnit", "object", "created_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["item_type", "Quest"], ["item_id", 2], ["event", "update"], ["whodunnit", nil], ["object", "---\nid: 2\ntitle: Community Outreach\nslug: community-outreach\nstatus: drafted\nuser_id: 1\nmetadata: '{\":meta_tags\":\"outreach;stories\"}'\npublished_at: !ruby/object:ActiveSupport::TimeWithZone\n  utc: 2025-12-03 18:30:00.000000000 Z\n  zone: &1 !ruby/object:ActiveSupport::TimeZone\n    name: Etc/UTC\n  time: 2025-12-03 18:30:00.000000000 Z\ncreated_at: !ruby/object:ActiveSupport::TimeWithZone\n  utc: 2025-12-05 16:02:41.409451000 Z\n  zone: *1\n  time: 2025-12-05 16:02:41.409451000 Z\nupdated_at: !ruby/object:ActiveSupport::TimeWithZone\n  utc: 2025-12-05 16:02:41.411911000 Z\n  zone: *1\n  time: 2025-12-05 16:02:41.411911000 Z\n"], ["created_at", "2025-12-05 16:02:41.411911"]]
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/services/quest_importer.rb:23:in `block in import!'
+  [1m[36mQuest Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "quests"[0m
