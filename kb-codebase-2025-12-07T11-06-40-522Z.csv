@@ -1,0 +1,73 @@
+package,methods
+rails,"groups; root; env"
+puma,
+sqlite3,
+mysql2,
+turbo-rails,
+stimulus-rails,
+importmap-rails,
+sass-rails,
+sprockets-rails,
+bootsnap,
+redis,
+httparty,
+actiontext,
+active_model_serializers,
+devise,"e; setup; secret_key; parent_controller; mailer_sender; com; mailer; parent_mailer; authentication_keys; request_keys; case_insensitive_keys; strip_whitespace_keys; params; params_authenticatable; http_authenticatable; http_authenticatable_on_xhr; http_authentication_realm; paranoid; rb; skip_session_storage; clean_up_csrf_token_on_authentication; reload_routes; g; stretches; env; pepper; send_email_changed_notification; send_password_change_notification; allow_unconfirmed_access_for; confirm_within; reconfirmable; confirmation_keys; remember_for; expire_all_remember_me_on_sign_out; extend_remember_period; rememberable_options; password_length; email_regexp; timeout_in; lock_strategy; unlock_keys; unlock_strategy; maximum_attempts; unlock_in; last_attempt_warning; reset_password_keys; reset_password_within; sign_in_after_reset_password; encryptor; scoped_views; default_scope; sign_out_all_scopes; navigational_formats; sign_out_via; omniauth; warden; intercept_401; default_strategies; router_name; omniauth_path_prefix; responder; sign_in_after_change_password"
+pundit,
+friendly_id,
+paper_trail,
+enumerize,
+jwt,
+omniauth,
+omniauth-oauth2,
+prometheus-client,
+resque,"redis; new; fetch; schedule; respond_to; dynamic"
+resque-scheduler,
+cocoon,
+smarter_csv,
+roo,open
+write_xlsx,
+nokogiri,
+oj,"current; blank; load; metadata; dump; presence; broadcast_to; ensure_registered; quest_events; quest_status_gauge; to_i"
+simple_form,
+responders,
+rubocop,
+uglifier,
+actionpack,
+actionmailer,
+actionmailbox,
+actioncable,
+byebug,
+capybara,
+selenium-webdriver,
+rspec-rails,
+shoulda-matchers,
+factory_bot_rails,
+faker,
+web-console,
+listen,
+spring,
+spring-watcher-listen,
+GET,
+authorize,
+scheduled,
+failed,
+tempfile,new
+fileutils,rm_f
+bundler,
+active_support,"application; rb; cache_classes; eager_load; consider_all_requests_local; server_timing; root; txt; action_controller; cache_store; public_file_server; to_i; yml; active_storage; action_mailer; active_support; active_record; assets; i18n; action_view; action_cable; new; action_dispatch; deliveries"
+syslog,new
+prometheus,"registry; new; register; ensure_registered"
+end,
+map,
+files,
+form,
+action,
+rails_helper,describe
+spec_helper,
+rspec,"configure; describe"
+test_helper,"signed; user_id"
+any,
+maps,
+the,
