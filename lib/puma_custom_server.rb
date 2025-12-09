@@ -11,8 +11,7 @@ class PumaCustomServer < Puma::Server
   end
 end
 
-# Usage example (not active in Rails by default):
-# app = Proc.new { |env| [200, {"Content-Type" => "text/plain"}, ["Hello from PumaCustomServer!"]] }
-# server = PumaCustomServer.new(app)
-# server.add_tcp_listener('0.0.0.0', 9292)
-# server.run
+
+# Direct call to handle_request for demonstration
+server = PumaCustomServer.new(nil)
+server.handle_request('demo_client', 'demo_buffer')
